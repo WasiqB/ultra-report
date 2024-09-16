@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "private": true,
+  "main": "./dist/index.js",
   "bin": {
     "ultra-report": "./dist/index.js"
   },
@@ -33,7 +34,7 @@
     "@eslint/js": "^9.10.0",
     "@stylistic/eslint-plugin-js": "^2.8.0",
     "@stylistic/eslint-plugin-ts": "^2.8.0",
-    "@types/node": "^20",
+    "@types/node": "^22.5.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/xml2js": "^0.4.14",
