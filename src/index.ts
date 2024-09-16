@@ -46,13 +46,13 @@ const mapToTestNGReport = (jsonData: any): TestNGReport => {
   return { testsuite: mappedTestSuite };
 };
 
-const generateReport = async (xmlFilePath: string) => {
+const generateReport = async (xmlFilePath: string): Promise<void> => {
   const fullPath = path.resolve(xmlFilePath);
 
   try {
     await fs.access(fullPath);
   } catch (error) {
-    console.error('Error: XML file not found at path:', fullPath);
+    console.error('Error: XML file not found at path:', fullPath, error);
     process.exit(1);
   }
 
@@ -74,7 +74,7 @@ const generateReport = async (xmlFilePath: string) => {
 
     console.log('Parsed XML data written to', outputPath);
 
-    exec('pnpm run build', (error, stdout, stderr) => {
+    exec('pnpm run build', (error, _stdout, _stderr) => {
       if (error) {
         console.error(`Error during build/export: ${error}`);
         process.exit(1);

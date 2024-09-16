@@ -25,7 +25,7 @@ const Report: FC<ReportProps> = ({ reportData }) => {
 
   return (
     <div className='container mx-auto p-8'>
-      <h1 className='mb-4 text-4xl font-bold'>
+      {/* <h1 className='mb-4 text-4xl font-bold'>
         TestNG Report: {testsuite.name}
       </h1>
       <p className='mb-2'>
@@ -46,10 +46,10 @@ const Report: FC<ReportProps> = ({ reportData }) => {
       </p>
       <p className='mb-2'>
         <strong>Total Time:</strong> {testsuite.time} seconds
-      </p>
+      </p> */}
 
       <div className='mt-8'>
-        <h2 className='text-2xl font-semibold'>Test Cases</h2>
+        <h2 className='text-2xl font-semibold'>Test Case Details</h2>
         <div className='mt-4'>
           {testsuite.testcase.map((test, index) => (
             <div

@@ -1,7 +1,8 @@
 import { promises as fs } from 'fs';
-import Report from '@/components/report';
+import Report from '@/components/report-details';
 import { TestNGReport } from '@/src/types';
 import path from 'path';
+import AutomatedTestCases from '@/components/automated-test-cases';
 
 export default async function HomePage() {
   const reportFilePath = path.join(
@@ -36,13 +37,16 @@ export default async function HomePage() {
             </p>
           </div>
         ) : (
-          <Report reportData={reportData} />
+          <div className='flex flex-col'>
+            <AutomatedTestCases reportData={reportData} />
+            <Report reportData={reportData} />
+          </div>
         )}
       </main>
 
       <footer className='mt-auto bg-blue-600 p-4 text-center text-white'>
         <p className='text-sm'>
-          &copy; 2024 Boyka Framework. All rights reserved.
+          &copy; 2024 Wasiq Bhamla. All rights reserved.
         </p>
       </footer>
     </div>
