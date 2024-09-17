@@ -7,6 +7,11 @@
   "bin": {
     "ultra-report": "./dist/index.js"
   },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -1,8 +1,8 @@
 import { promises as fs } from 'fs';
-import Report from '@/components/report-details';
+import Report from './components/report-details';
 import { TestNGReport } from '@/src/types';
 import path from 'path';
-import AutomatedTestCases from '@/components/automated-test-cases';
+import AutomatedTestCases from './components/automated-test-cases';
 
 export default async function HomePage() {
   const reportFilePath = path.join(

@@ -1,10 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import { ChartConfig } from './ui/chart';
+import { ChartConfig } from '@/components/ui/chart';
 import { TestNGReport } from '@/src/types';
-import DoughNutComponent from './pie-chart';
-import StatCounter from './stat';
+import DoughNutComponent from '@/components/dough-nut-chart';
+import StatCounter from '@/components/stat';
 
 interface TestCasesProps {
   reportData: TestNGReport;

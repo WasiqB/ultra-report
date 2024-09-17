@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { TestNGReport } from '../src/types';
+import { TestNGReport } from '@/src/types';
 import { GetServerSideProps } from 'next';
 
 interface ReportProps {
@@ -9,7 +9,7 @@ interface ReportProps {
 }
 
 export const getServerSideProps: GetServerSideProps<ReportProps> = async () => {
-  const { readTestReport } = await import('../lib/read-test-result');
+  const { readTestReport } = await import('@/lib/read-test-result');
 
   const reportData = readTestReport('results.json');
 
@@ -25,29 +25,6 @@ const Report: FC<ReportProps> = ({ reportData }) => {
 
   return (
     <div className='container mx-auto p-8'>
-      {/* <h1 className='mb-4 text-4xl font-bold'>
-        TestNG Report: {testsuite.name}
-      </h1>
-      <p className='mb-2'>
-        <strong>Hostname:</strong> {testsuite.hostname}
-      </p>
-      <p className='mb-2'>
-        <strong>Timestamp:</strong>{' '}
-        {new Date(testsuite.timestamp).toLocaleString()}
-      </p>
-      <p className='mb-2'>
-        <strong>Total Tests:</strong> {testsuite.tests}
-      </p>
-      <p className='mb-2'>
-        <strong>Failures:</strong> {testsuite.failures}
-      </p>
-      <p className='mb-2'>
-        <strong>Ignored:</strong> {testsuite.ignored}
-      </p>
-      <p className='mb-2'>
-        <strong>Total Time:</strong> {testsuite.time} seconds
-      </p> */}
-
       <div className='mt-8'>
         <h2 className='text-2xl font-semibold'>Test Case Details</h2>
         <div className='mt-4'>
