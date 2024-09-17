@@ -3,8 +3,12 @@ import Report from './components/report-details';
 import { TestNGReport } from '@/src/types';
 import path from 'path';
 import AutomatedTestCases from './components/automated-test-cases';
+import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import Footer from './components/footer';
 
-export default async function HomePage() {
+export default async function HomePage(): Promise<
+  DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+> {
   const reportFilePath = path.join(
     process.cwd(),
     'public/results',
@@ -25,15 +29,16 @@ export default async function HomePage() {
   return (
     <div className='min-h-screen bg-gray-50'>
       <header className='bg-blue-600 p-6 text-center text-white'>
-        <h1 className='text-3xl font-bold'>Test Automation Report</h1>
+        <h1 className='text-3xl font-bold'>Ultra Report</h1>
       </header>
 
       <main className='container mx-auto p-8'>
         {!reportData ? (
-          <div className='mt-8 text-center'>
+          <div className='mt-8 w-full text-center'>
             <h2 className='text-xl font-semibold'>No Report Available</h2>
             <p className='text-gray-600'>
-              Please upload or generate a test report.
+              No result file found on the provided path:
+              <span className='pl-1 text-sm font-bold'>{reportFilePath}</span>
             </p>
           </div>
         ) : (
@@ -44,11 +49,7 @@ export default async function HomePage() {
         )}
       </main>
 
-      <footer className='mt-auto bg-blue-600 p-4 text-center text-white'>
-        <p className='text-sm'>
-          &copy; 2024 Wasiq Bhamla. All rights reserved.
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 }
