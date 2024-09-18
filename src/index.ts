@@ -55,12 +55,15 @@ const mapToTestNGReport = (jsonData: any): TestNGReport => {
 };
 
 const generateReport = async (filePath: string): Promise<void> => {
+  const timerLabel = 'Total time taken';
+  console.time(timerLabel);
   const fullPath = path.resolve(filePath);
   const outputDir = path.resolve('public/results');
   await checkAccess(fullPath);
   await generateJson(fullPath, outputDir);
   await buildReport();
   await openReport();
+  console.timeEnd(timerLabel);
 };
 
 const openReport = async () => {
@@ -79,6 +82,7 @@ const printInfo = () => {
   logger.info(`You can find the report at "${reportPath}"`);
   logger.break();
   logger.info('Read the docs at 🔗 https://github.com/WasiqB/ultra-report');
+  logger.break();
 };
 
 const buildReport = async (): Promise<void> => {
