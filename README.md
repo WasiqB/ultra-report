@@ -4,7 +4,7 @@ This is a simple TestNG reporter
 
 ## 📷 Sample Report
 
-![Ultra-report](/assets/ultra-report.gif)
+![Ultra-report](/assets/ultra-report.png)
 
 ## 🚀 Getting Started
 
