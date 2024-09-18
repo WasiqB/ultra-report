@@ -3,6 +3,10 @@ import path from 'path';
 import { exec } from 'child_process';
 import { parseStringPromise } from 'xml2js';
 import { TestCase, TestNGReport, TestSuite } from './types';
+import { logger } from './utils/logger.js';
+import { checkAccess } from './utils/files.js';
+import { spinner } from './utils/spinner.js';
+import { handleError } from './utils/handle-error.js';
 
 const mapToTestNGReport = (jsonData: any): TestNGReport => {
   const testsuite = jsonData.testsuite;
@@ -46,19 +50,41 @@ const mapToTestNGReport = (jsonData: any): TestNGReport => {
   return { testsuite: mappedTestSuite };
 };
 
-const generateReport = async (xmlFilePath: string): Promise<void> => {
-  const fullPath = path.resolve(xmlFilePath);
+const generateReport = async (filePath: string): Promise<void> => {
+  const fullPath = path.resolve(filePath);
+  const outputDir = path.resolve('public/results');
+  await checkAccess(fullPath);
+  await generateJson(fullPath, outputDir);
+  buildReport();
+};
 
+const printInfo = (outputDir: string) => {
+  logger.info(`You can find the report at "${path.resolve(outputDir)}"`);
+  logger.break();
+  logger.info('Read the docs at: https://github.com/WasiqB/ultra-report');
+};
+
+const buildReport = (): void => {
+  const loader = spinner('Building and generating report...');
+
+  exec('pnpm build', (err) => {
+    if (err) {
+      loader.stop();
+      handleError('Error during build/export', err);
+    }
+    loader.succeed('Report generated successfully!');
+    printInfo('out/index.html');
+  });
+};
+
+const generateJson = async (
+  filePath: string,
+  outputDir: string
+): Promise<void> => {
+  const loader = spinner('Parsing XML file to JSON...');
   try {
-    await fs.access(fullPath);
-  } catch (error) {
-    console.error('Error: XML file not found at path:', fullPath, error);
-    process.exit(1);
-  }
+    const xmlData = await fs.readFile(filePath, 'utf-8');
 
-  const xmlData = await fs.readFile(fullPath, 'utf-8');
-
-  try {
     const jsonData = await parseStringPromise(xmlData, {
       explicitArray: false,
       mergeAttrs: true,
@@ -66,31 +92,20 @@ const generateReport = async (xmlFilePath: string): Promise<void> => {
 
     const testNGReport = mapToTestNGReport(jsonData);
 
-    const outputDir = path.resolve('public/results');
     await fs.mkdir(outputDir, { recursive: true });
 
     const outputPath = path.join(outputDir, 'results.json');
     await fs.writeFile(outputPath, JSON.stringify(testNGReport, null, 2));
-
-    console.log('Parsed XML data written to', outputPath);
-
-    exec('pnpm run build', (error, _stdout, _stderr) => {
-      if (error) {
-        console.error(`Error during build/export: ${error}`);
-        process.exit(1);
-      }
-      console.log('Report generated successfully!');
-      console.log('You can find the report in the "out" directory.');
-    });
+    loader.succeed(`Parsed XML data written to', ${outputDir}`);
   } catch (err) {
-    console.error('Error parsing XML:', err);
-    process.exit(1);
+    loader.stop();
+    handleError('Error while generating JSON from XML', err);
   }
 };
 
 const xmlFilePath = process.argv[2];
 if (!xmlFilePath) {
-  console.error('Usage: ts-node generate-report.ts <path-to-xml-file>');
+  logger.error('Usage: ts-node generate-report.ts <path-to-xml-file>');
   process.exit(1);
 }
 

@@ -7,11 +7,6 @@
   "bin": {
     "ultra-report": "./dist/index.js"
   },
-  "files": [
-    "src",
-    "README.md",
-    "LICENSE"
-  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -26,8 +21,10 @@
   "dependencies": {
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "log-symbols": "^7.0.0",
     "lucide-react": "^0.441.0",
     "next": "14.2.11",
+    "ora": "^8.1.0",
     "react": "^18",
     "react-dom": "^18",
     "recharts": "^2.12.7",
@@ -41,7 +38,7 @@
     "@stylistic/eslint-plugin-js": "^2.8.0",
     "@stylistic/eslint-plugin-ts": "^2.8.0",
     "@types/node": "^22.5.5",
-    "@types/react": "^18",
+    "@types/react": "^18.3.7",
     "@types/react-dom": "^18",
     "@types/xml2js": "^0.4.14",
     "daisyui": "^4.12.10",
@@ -54,9 +51,9 @@
     "postcss": "^8",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.12",
     "ts-node": "^10.9.2",
     "typescript": "^5",
-    "typescript-eslint": "^8.5.0"
+    "typescript-eslint": "^8.6.0"
   }
 }
