@@ -1,12 +1,16 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import { exec } from 'child_process';
+import util from 'util';
 import { parseStringPromise } from 'xml2js';
 import { TestCase, TestNGReport, TestSuite } from './types';
 import { logger } from './utils/logger.js';
 import { checkAccess } from './utils/files.js';
 import { spinner } from './utils/spinner.js';
 import { handleError } from './utils/handle-error.js';
+import open from 'open';
+import { exec } from 'child_process';
+
+const reportPath = path.resolve('out/index.html');
 
 const mapToTestNGReport = (jsonData: any): TestNGReport => {
   const testsuite = jsonData.testsuite;
@@ -55,26 +59,39 @@ const generateReport = async (filePath: string): Promise<void> => {
   const outputDir = path.resolve('public/results');
   await checkAccess(fullPath);
   await generateJson(fullPath, outputDir);
-  buildReport();
+  await buildReport();
+  await openReport();
 };
 
-const printInfo = (outputDir: string) => {
-  logger.info(`You can find the report at "${path.resolve(outputDir)}"`);
+const openReport = async () => {
+  const loader = spinner('Opening the report in the default browser...');
+  try {
+    await open(reportPath);
+    loader.succeed('Report opened in the default browser.');
+    printInfo();
+  } catch (error) {
+    loader.stop();
+    handleError('Error while opening the report', error);
+  }
+};
+
+const printInfo = () => {
+  logger.info(`You can find the report at "${reportPath}"`);
   logger.break();
-  logger.info('Read the docs at: https://github.com/WasiqB/ultra-report');
+  logger.info('Read the docs at 🔗 https://github.com/WasiqB/ultra-report');
 };
 
-const buildReport = (): void => {
+const buildReport = async (): Promise<void> => {
   const loader = spinner('Building and generating report...');
 
-  exec('pnpm build', (err) => {
-    if (err) {
-      loader.stop();
-      handleError('Error during build/export', err);
-    }
+  const execute = util.promisify(exec);
+  try {
+    await execute('pnpm build');
     loader.succeed('Report generated successfully!');
-    printInfo('out/index.html');
-  });
+  } catch (error) {
+    loader.stop();
+    handleError('Error during build/export', error);
+  }
 };
 
 const generateJson = async (
@@ -96,7 +113,7 @@ const generateJson = async (
 
     const outputPath = path.join(outputDir, 'results.json');
     await fs.writeFile(outputPath, JSON.stringify(testNGReport, null, 2));
-    loader.succeed(`Parsed XML data written to', ${outputDir}`);
+    loader.succeed(`Parsed XML data written to "${outputDir}"`);
   } catch (err) {
     loader.stop();
     handleError('Error while generating JSON from XML', err);
