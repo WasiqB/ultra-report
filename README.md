@@ -15,7 +15,8 @@ This is a simple TestNG reporter
 
 ## Tech Stack
 
-- Next JS 14
-- TypeScript
-- Tailwind CSS
-- Shadcn/ui
+- [Next JS 14](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Shadcn/ui](https://ui.shadcn.com/)
+- [Daisy UI](https://daisyui.com/)
