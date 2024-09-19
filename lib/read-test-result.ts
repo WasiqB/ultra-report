@@ -1,4 +1,5 @@
-export const readTestReport = (fileName: string) => {
+/* eslint-disable @typescript-eslint/no-require-imports */
+export const readTestReport = (fileName: string): any => {
   if (typeof window === 'undefined') {
     const fs = require('fs');
     const path = require('path');
