@@ -1,4 +1,13 @@
 
+
+## 0.1.1 (2024-09-19)
+
+#### :bug: Bug Fix
+* [#25](https://github.com/WasiqB/ultra-report/pull/25) fix: :bug: fixed issue with published package ([@WasiqB](https://github.com/WasiqB))
+
+#### Committers: 1
+- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
+
 ## 0.1.0 (2024-09-19)
 
 #### :rocket: New Feature
