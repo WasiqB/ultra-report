@@ -42,7 +42,7 @@ body:
       required: true
 
   - type: textarea
-    id: expected-result
+    id: actual-result
     attributes:
       label: ❌ Actual Behavior
       placeholder: What actually happened?
