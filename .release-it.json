@@ -6,12 +6,14 @@
     }
   },
   "git": {
+    "requireBranch": "main",
     "commitMessage": "chore: release v${version}",
     "commit": true,
     "tag": true,
     "push": true,
     "commitArgs": ["-S", "--no-verify"],
-    "tagArgs": ["-s"]
+    "tagArgs": ["-s"],
+    "requireCleanWorkingDir": true
   },
   "github": {
     "release": true,
