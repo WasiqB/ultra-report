@@ -1,12 +1,25 @@
 {
   "name": "ultra-report",
-  "version": "0.1.0",
+  "description": "📊 Next JS based TestNG reporter",
+  "version": "0.0.1",
   "type": "module",
   "license": "AGPL-3.0-or-later",
   "private": true,
   "main": "./dist/index.js",
   "bin": {
     "ultra-report": "./dist/index.js"
+  },
+  "author": {
+    "name": "Wasiq Bhamla"
+  },
+  "repository": {
+    "url": "https://github.com/WasiqB/ultra-report"
+  },
+  "bugs": {
+    "url": "https://github.com/WasiqB/ultra-report/issues"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/WasiqB"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
