@@ -21,7 +21,6 @@
     "url": "https://github.com/sponsors/WasiqB"
   },
   "scripts": {
-    "postinstall": "husky",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
