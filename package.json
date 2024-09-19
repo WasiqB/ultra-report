@@ -83,7 +83,7 @@
       "pnpm format-fix",
       "pnpm format"
     ],
-    "**/*.{mjs}": [
+    "**/*.mjs": [
       "pnpm lint",
       "pnpm format-fix",
       "pnpm format"
