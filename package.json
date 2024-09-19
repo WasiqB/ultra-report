@@ -9,8 +9,16 @@
     "ultra-report": "./dist/index.js"
   },
   "author": {
-    "name": "Wasiq Bhamla"
+    "name": "Wasiq Bhamla",
+    "email": "wasbhamla2005@gmail.com"
   },
+  "contributors": [
+    {
+      "name": "Wasiq Bhamla",
+      "email": "wasbhamla2005@gmail.com"
+    }
+  ],
+  "homepage": "https://github.com/WasiqB/ultra-report",
   "repository": {
     "url": "https://github.com/WasiqB/ultra-report"
   },
@@ -19,6 +27,9 @@
   },
   "sponsor": {
     "url": "https://github.com/sponsors/WasiqB"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "scripts": {
     "dev": "next dev",
