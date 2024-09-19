@@ -66,7 +66,7 @@ const generateReport = async (filePath: string): Promise<void> => {
   console.timeEnd(timerLabel);
 };
 
-const openReport = async () => {
+const openReport = async (): Promise<void> => {
   const loader = spinner('Opening the report in the default browser...');
   try {
     await open(reportPath);
@@ -78,7 +78,7 @@ const openReport = async () => {
   }
 };
 
-const printInfo = () => {
+const printInfo = (): void => {
   logger.info(`You can find the report at "${reportPath}"`);
   logger.break();
   logger.info('Read the docs at 🔗 https://github.com/WasiqB/ultra-report');

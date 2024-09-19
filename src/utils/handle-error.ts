@@ -5,7 +5,7 @@ export const handleError = (
   message: string,
   error: unknown,
   printStack: boolean = false
-) => {
+): void => {
   logger.error(chalk.red(message));
   logger.break();
   if (typeof error === 'string') {
@@ -26,7 +26,7 @@ export const handleError = (
     )
   );
   logger.log(
-    chalk.blueBright(`🔗 https://github.com/WasiqB/ultra-report/issues/new`)
+    chalk.blueBright('🔗 https://github.com/WasiqB/ultra-report/issues/new')
   );
   process.exit(1);
 };

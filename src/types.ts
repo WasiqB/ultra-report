@@ -25,8 +25,10 @@ type Failure = {
   details: string;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 type Skipped = {};
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 type Ignored = {};
 
 export type TestNGReport = {

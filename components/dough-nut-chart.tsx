@@ -34,7 +34,7 @@ const DoughNutComponent = ({
   totalValue,
   valueLabel,
   footer,
-}: DoughNutProps) => {
+}: DoughNutProps): JSX.Element => {
   return (
     <Card className='flex w-full flex-col shadow-md'>
       <CardHeader className='items-center pb-0'>

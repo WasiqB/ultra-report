@@ -1,6 +1,6 @@
-import ora from 'ora';
+import ora, { Ora } from 'ora';
 
-export const spinner = (text: string) => {
+export const spinner = (text: string): Ora => {
   const loader = ora().start();
   loader.text = text;
   loader.color = 'yellow';

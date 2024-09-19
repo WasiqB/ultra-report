@@ -32,7 +32,7 @@ const chartConfig: ChartConfig = {
   },
 };
 
-const AutomatedTestCases = ({ reportData }: TestCasesProps) => {
+const AutomatedTestCases = ({ reportData }: TestCasesProps): JSX.Element => {
   const skippedCases = reportData.testsuite.testcase.filter(
     (test) => test.skipped
   ).length;

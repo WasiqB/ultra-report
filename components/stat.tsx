@@ -6,7 +6,11 @@ interface StatProps {
   time?: boolean;
 }
 
-const StatCounter = ({ title, value, time = false }: StatProps) => {
+const StatCounter = ({
+  title,
+  value,
+  time = false,
+}: StatProps): JSX.Element => {
   return (
     <Card className='m-2 pr-1 shadow-md'>
       <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>

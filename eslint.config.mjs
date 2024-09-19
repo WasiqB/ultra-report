@@ -15,14 +15,25 @@ const __dirname = path.dirname(__filename);
 const gitignorePath = path.resolve(__dirname, '.gitignore');
 
 export default [
-  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
-  { languageOptions: { globals: globals.browser, parser: tsParser } },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   react.configs.flat.recommended,
   prettierRecommended,
   includeIgnoreFile(gitignorePath),
   {
+    languageOptions: {
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+      },
+      parser: tsParser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    files: ['**/*.{js,mjs,ts,tsx}'],
     plugins: {
       '@stylistic/ts': stylisticTs,
       '@stylistic/js': stylisticJs,
@@ -51,5 +62,8 @@ export default [
       'import/prefer-default-export': 'off',
       'prettier/prettier': ['error', { singleQuote: true }],
     },
+  },
+  {
+    ignores: ['components/ui/', 'assets/', '.github/'],
   },
 ];
