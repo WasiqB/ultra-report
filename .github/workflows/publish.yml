@@ -69,4 +69,4 @@ jobs:
 
       - name: Publish Release on GitHub and NPM
         if: ${{ ! inputs.pre-release }}
-        run: pnpm release.${{ github.event.inputs.release-type }}
+        run: pnpm release:${{ github.event.inputs.release-type }}
