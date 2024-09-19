@@ -4,7 +4,6 @@
   "version": "0.1.0",
   "type": "module",
   "license": "AGPL-3.0-or-later",
-  "private": true,
   "main": "./dist/index.js",
   "bin": {
     "ultra-report": "./dist/index.js"
@@ -22,7 +21,6 @@
     "url": "https://github.com/sponsors/WasiqB"
   },
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "postinstall": "husky",
     "dev": "next dev",
     "build": "next build",

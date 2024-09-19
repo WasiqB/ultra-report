@@ -2,9 +2,9 @@ name: 🐛 Raise a bug
 description: |
   This template is used to create a new bug report.
   Please provide as much information as possible.
-title: '🐛 New Bug:'
 labels:
   - 'bug'
+title: '🐛 New Bug:'
 body:
   - type: input
     id: description
