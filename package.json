@@ -1,7 +1,7 @@
 {
   "name": "ultra-report",
   "description": "📊 Next JS based TestNG reporter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "license": "AGPL-3.0-or-later",
   "main": "./dist/index.js",
