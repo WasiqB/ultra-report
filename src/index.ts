@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { promises as fs } from 'fs';
 import path from 'path';
 import util from 'util';
@@ -9,6 +11,7 @@ import { spinner } from './utils/spinner.js';
 import { handleError } from './utils/handle-error.js';
 import open from 'open';
 import { exec } from 'child_process';
+import chalk from 'chalk';
 
 const reportPath = path.resolve('out/index.html');
 
@@ -126,7 +129,7 @@ const generateJson = async (
 
 const xmlFilePath = process.argv[2];
 if (!xmlFilePath) {
-  logger.error('Usage: ts-node generate-report.ts <path-to-xml-file>');
+  logger.error(chalk.redBright('Usage: ultra-report <path-to-xml-file>'));
   process.exit(1);
 }
 
