@@ -31,14 +31,6 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "files": [
-    "app",
-    "components",
-    "dist",
-    "lib",
-    "LICENSE",
-    "README"
-  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
