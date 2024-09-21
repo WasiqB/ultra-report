@@ -15,7 +15,7 @@ export const handleError = (
     if (error.cause) {
       logger.log(chalk.red(`Caused By: ${error.cause}`));
     }
-    if (printStack) {
+    if (printStack && error.stack) {
       logger.log(chalk.red(`Stacktrace: ${error.stack}`));
     }
   }
