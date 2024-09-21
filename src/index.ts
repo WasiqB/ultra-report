@@ -93,11 +93,11 @@ const buildReport = async (): Promise<void> => {
 
   const execute = util.promisify(exec);
   try {
-    await execute('pnpm build');
+    await execute('npm run build');
     loader.succeed('Report generated successfully!');
   } catch (error) {
     loader.stop();
-    handleError('Error during build/export', error);
+    handleError('Error during build/export', error, true);
   }
 };
 
