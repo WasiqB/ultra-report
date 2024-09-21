@@ -2,6 +2,15 @@
 
 
 
+
+## 0.1.4-beta.0 (2024-09-21)
+
+#### :bug: Bug Fix
+* [#30](https://github.com/WasiqB/ultra-report/pull/30) fix: 🐛 fixed issue while running the command after install ([@WasiqB](https://github.com/WasiqB))
+
+#### Committers: 1
+- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
+
 ## 0.1.3-beta.0 (2024-09-21)
 
 #### :bug: Bug Fix
