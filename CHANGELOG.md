@@ -1,6 +1,15 @@
 
 
 
+
+## 0.1.3-beta.0 (2024-09-21)
+
+#### :bug: Bug Fix
+* [#28](https://github.com/WasiqB/ultra-report/pull/28) fix: :bug: fixed issue when executing cli ([@WasiqB](https://github.com/WasiqB))
+
+#### Committers: 1
+- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
+
 ## 0.1.2 (2024-09-19)
 
 #### :bug: Bug Fix
